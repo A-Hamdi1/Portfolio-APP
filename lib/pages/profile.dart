@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:portfolio/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
 import '../function/section_functions.dart';
@@ -31,6 +33,18 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
+
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+        },
+        child: Icon(
+          Icons.brightness_4,
+          color: Colors.white,
+
+        ),
+        backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
       ),
     );
   }
@@ -108,7 +122,9 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 16.0),
           _buildSoftSkillsTrainingTiles(),
         ],
+
       ),
+
     );
   }
 

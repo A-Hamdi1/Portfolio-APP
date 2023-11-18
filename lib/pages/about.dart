@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
@@ -99,6 +101,15 @@ class AboutPage extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+          },
+          child: Icon(
+            Icons.brightness_4,
+          ),
+          backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
         ),
       ),
     );

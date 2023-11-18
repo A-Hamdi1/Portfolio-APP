@@ -26,6 +26,7 @@ dependencies:
   google_fonts: ^6.1.0
   cupertino_icons: ^1.0.6
   flutter_native_splash: ^2.3.5
+  provider: ^6.1.1
 
 flutter_native_splash:
   image: assets/images/light.png

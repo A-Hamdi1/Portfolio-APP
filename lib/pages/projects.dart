@@ -4,6 +4,8 @@ import 'package:portfolio/component/project_screen3.dart';
 import 'package:portfolio/component/project_screen4.dart';
 import 'package:portfolio/component/project_screen5.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
 import '../component/ProjectCart.dart';
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
@@ -97,6 +99,15 @@ class ProjectPage extends StatelessWidget {
               const SizedBox(height: 60),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+          },
+          child: Icon(
+            Icons.brightness_4,
+          ),
+          backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
         ),
       ),
     );

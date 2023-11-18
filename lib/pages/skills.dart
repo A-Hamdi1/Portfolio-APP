@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/pages/skills.dart';
+import 'package:portfolio/theme/theme_provider.dart';
+import 'package:provider/provider.dart'; // Import Provider package
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
 
@@ -37,13 +40,13 @@ class SkillPage extends StatelessWidget {
                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
                   title: Text('Akram Hamdi',
                       style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                color: Colors.white,
-                              )),
+                      Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Colors.white,
+                      )),
                   subtitle: Text('FullStack Developer',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: Colors.white70,
-                          )),
+                        color: Colors.white70,
+                      )),
                   trailing: const CircleAvatar(
                     radius: 30,
                     backgroundImage: AssetImage('assets/images/me.jpg'),
@@ -100,11 +103,21 @@ class SkillPage extends StatelessWidget {
           const SizedBox(height: 20),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+        },
+        child: Icon(
+          Icons.brightness_4,
+          color: Colors.white,
+        ),
+        backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
+      ),
     );
   }
 
   Widget itemDashboard(BuildContext context, String title, String svgPath,
-          Color background, bool darkMode) =>
+      Color background, bool darkMode) =>
       Container(
         decoration: BoxDecoration(
             color: darkMode ? TColors.grey : Colors.white,
@@ -135,3 +148,5 @@ class SkillPage extends StatelessWidget {
         ),
       );
 }
+
+
