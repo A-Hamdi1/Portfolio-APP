@@ -1,0 +1,94 @@
+name: portfolio
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  iconsax: ^0.0.8
+  get: ^4.6.6
+  intl: ^0.18.1
+  fab_circular_menu: ^1.0.2
+  url_launcher: ^6.2.1
+  flutter_phone_direct_caller: ^2.1.1
+  font_awesome_flutter: ^10.6.0
+  smooth_page_indicator: ^1.1.0
+  iconly: ^1.0.1
+  lottie: ^2.7.0
+  flutter_svg: ^2.0.9
+  google_fonts: ^6.1.0
+  cupertino_icons: ^1.0.6
+  flutter_native_splash: ^2.3.5
+
+flutter_native_splash:
+  image: assets/images/light.png
+  color: "#FFFFFF"
+  image_dark: assets/images/dark.png
+  color_dark: "#272727"
+
+  android_12:
+    image: assets/images/light.png
+    color: "#FFFFFF"
+    image_dark: assets/images/dark.png
+    color_dark: "#272727"
+
+  web: false
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/cv_icon.png"
+
+  flutter_lints: ^3.0.1
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/me.jpg
+    - assets/images/light.png
+    - assets/images/dark.png
+    - assets/images/Item_3.png
+    - assets/frameworks/bootstrap.svg
+    - assets/frameworks/android.svg
+    - assets/frameworks/angular.svg
+    - assets/frameworks/laravel.svg
+    - assets/frameworks/html-5.svg
+    - assets/frameworks/js.svg
+    - assets/frameworks/python.svg
+    - assets/frameworks/flutter.svg
+    - animations/1.json
+    - animations/2.json
+    - assets/images/github.png
+    - assets/images/linkedin.png
+    - assets/images/facebook.png
+    - assets/images/whatsapp.png
+    - assets/images/gmail.png
+    - assets/images/cv_icon.png
+    - assets/images/artyprod.png
+    - assets/images/dashboard.png
+    - assets/images/Food Picture.png
+    - assets/images/Rectangle 219.png
+    - assets/images/website1.jpg
+    - assets/images/website2.jpg
+    - assets/images/website3.jpg
+    - assets/images/website4.jpg
+    - assets/images/website5.jpg
