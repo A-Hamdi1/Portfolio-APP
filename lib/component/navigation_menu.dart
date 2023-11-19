@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:portfolio/pages/contact.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../function/helper_functions.dart';
 import '../constant/Colors.dart';
-import '../pages/about.dart';
 import '../pages/profile.dart';
 import '../pages/projects.dart';
 import '../pages/skills.dart';
@@ -83,7 +83,7 @@ class NavigationController extends GetxController {
     const ProfilePage(),
     const SkillPage(),
     const ProjectPage(),
-    const AboutPage(),
+    const SpecifiquePage(),
   ];
   final PageController pageController = PageController(initialPage: 0);
 }
