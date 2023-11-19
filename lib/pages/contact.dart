@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/component/desktop.dart';
+import 'package:portfolio/component/mobile.dart';
+import 'package:portfolio/component/web.dart';
 import 'package:portfolio/constant/Colors.dart';
 import 'package:portfolio/function/helper_functions.dart';
 import 'package:portfolio/theme/theme_provider.dart';
-import 'package:portfolio/type/desktop.dart';
-import 'package:portfolio/type/mobile.dart';
-import 'package:portfolio/type/web.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -72,8 +72,7 @@ class _SpecifiquePageState extends State<SpecifiquePage> {
                     child: ClipOval(
                       child: Image.asset(
                         'assets/images/me.jpg',
-                        // Replace with your image file name
-                        fit: BoxFit.cover, // Adjust the fit as needed
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -86,7 +85,6 @@ class _SpecifiquePageState extends State<SpecifiquePage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                // color: Colors.grey.shade600),
                 color: darkMode ? TColors.white : Colors.grey.shade800,
               ),
             ),
