@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:portfolio/pages/skills.dart';
 import 'package:portfolio/theme/theme_provider.dart';
-import 'package:provider/provider.dart'; // Import Provider package
+import 'package:provider/provider.dart';
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
 

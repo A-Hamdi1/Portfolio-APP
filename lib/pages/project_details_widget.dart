@@ -1,9 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:portfolio/models/project_model.dart';
 import '../constant/Colors.dart';
 
-class ProjectScreen5 extends StatelessWidget {
-  const ProjectScreen5({Key? key}) : super(key: key);
+class ProjectDetailsWidget extends StatelessWidget {
+  final ProjectModel project;
+
+  const ProjectDetailsWidget({Key? key, required this.project})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +17,7 @@ class ProjectScreen5 extends StatelessWidget {
           children: [
             SizedBox(
               width: double.infinity,
-              child: Image.asset(
-                "assets/images/website5.jpg",
-              ),
+              child: Image.asset(project.image),
             ),
             buttonArrow(context),
             scroll(),
@@ -94,7 +96,7 @@ class ProjectScreen5 extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Big Bites Food's",
+                  project.title,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(
@@ -102,7 +104,7 @@ class ProjectScreen5 extends StatelessWidget {
                 ),
                 Row(
                   children: List.generate(
-                    5,
+                    project.rating.toInt(),
                     (index) =>
                         const Icon(Icons.star, color: Colors.amber, size: 18),
                   ),
@@ -120,7 +122,7 @@ class ProjectScreen5 extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      "Akram Hamdi",
+                      project.author,
                       style: Theme.of(context)
                           .textTheme
                           .titleLarge!
@@ -143,9 +145,7 @@ class ProjectScreen5 extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod '
-                  'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim'
-                  ' veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                  project.description,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!
@@ -164,75 +164,30 @@ class ProjectScreen5 extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFE3FFF8),
-                        child: Icon(
-                          Icons.done,
-                          size: 15,
-                          color: Primary,
+                for (var tech in project.technologies)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 10,
+                          backgroundColor: Color(0xFFE3FFF8),
+                          child: Icon(
+                            Icons.done,
+                            size: 15,
+                            color: Primary,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Laravel",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFE3FFF8),
-                        child: Icon(
-                          Icons.done,
-                          size: 15,
-                          color: Primary,
+                        const SizedBox(
+                          width: 10,
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Flutter",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 10,
-                        backgroundColor: Color(0xFFE3FFF8),
-                        child: Icon(
-                          Icons.done,
-                          size: 15,
-                          color: Primary,
+                        Text(
+                          tech,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Firebase",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 15),
                   child: Divider(
@@ -246,12 +201,8 @@ class ProjectScreen5 extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (context, index) => steps(context, index),
-                ),
+                for (var index = 0; index < project.steps.length; index++)
+                  steps(context, index),
               ],
             ),
           ),
@@ -277,7 +228,7 @@ class ProjectScreen5 extends StatelessWidget {
               SizedBox(
                 width: 270,
                 child: Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+                  project.steps[index],
                   maxLines: 3,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
@@ -286,7 +237,7 @@ class ProjectScreen5 extends StatelessWidget {
                 height: 10,
               ),
               Image.asset(
-                "assets/images/website5.jpg",
+                project.image,
                 height: 155,
                 width: 270,
               )

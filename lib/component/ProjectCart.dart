@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:portfolio/models/project_model.dart';
+import 'package:portfolio/pages/project_details_widget.dart';
 import '../constant/Colors.dart';
 
 class ProjectCard extends StatelessWidget {
-  final String titre, image;
+  final ProjectModel project;
   final bool darkMode;
-  final Widget detailsPage;
 
   const ProjectCard({
     Key? key,
-    required this.titre,
-    required this.image,
+    required this.project,
     required this.darkMode,
-    required this.detailsPage,
   }) : super(key: key);
 
   @override
@@ -38,7 +36,8 @@ class ProjectCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.asset(image, height: 150, width: 150, fit: BoxFit.cover),
+            child: Image.asset(project.image,
+                height: 150, width: 150, fit: BoxFit.cover),
           ),
           const SizedBox(
             width: 15,
@@ -47,31 +46,31 @@ class ProjectCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(titre,
+                Text(project.title,
                     style: darkMode
                         ? Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(color: Colors.white)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(color: Colors.white)
                         : Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 3),
                 Row(
                   children: List.generate(
                     5,
-                        (index) =>
-                    const Icon(Icons.star, color: Colors.amber, size: 18),
+                    (index) =>
+                        const Icon(Icons.star, color: Colors.amber, size: 18),
                   ),
                 ),
                 const SizedBox(height: 3),
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ',
                   style: darkMode
                       ? Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w300, color: Colors.white)
+                          fontWeight: FontWeight.w300, color: Colors.white)
                       : Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(fontWeight: FontWeight.w300),
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(fontWeight: FontWeight.w300),
                 ),
                 const SizedBox(height: 5),
                 ElevatedButton(
@@ -79,7 +78,8 @@ class ProjectCard extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => detailsPage,
+                        builder: (context) =>
+                            ProjectDetailsWidget(project: project),
                       ),
                     );
                   },

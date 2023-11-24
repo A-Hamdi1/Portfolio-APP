@@ -9,16 +9,16 @@ import 'package:portfolio/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(SpecifiquePage());
+void main() => runApp(ContactPage());
 
-class SpecifiquePage extends StatefulWidget {
-  const SpecifiquePage({super.key});
+class ContactPage extends StatefulWidget {
+  const ContactPage({super.key});
 
   @override
-  State<SpecifiquePage> createState() => _SpecifiquePageState();
+  State<ContactPage> createState() => _ContactPageState();
 }
 
-class _SpecifiquePageState extends State<SpecifiquePage> {
+class _ContactPageState extends State<ContactPage> {
   final List<Widget> tabs = const [
     Tab(
       icon: Icon(
@@ -117,6 +117,12 @@ class _SpecifiquePageState extends State<SpecifiquePage> {
                   onTap: () => _launchLinkedin(),
                   darkMode: darkMode,
                 ),
+                SizedBox(width: 25),
+                buildSocialIcon(
+                  FontAwesomeIcons.locationDot,
+                  onTap: () => _launchMaps(),
+                  darkMode: darkMode,
+                ),
               ],
             ),
             SizedBox(height: 20),
@@ -193,6 +199,8 @@ class _SpecifiquePageState extends State<SpecifiquePage> {
           },
           child: Icon(
             Icons.brightness_4,
+            color: Colors.white,
+
           ),
           backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
         ),
@@ -232,6 +240,12 @@ Future<void> _launchGithub() async {
 
 Future<void> _launchLinkedin() async {
   final Uri _urlLink = Uri.parse('https://www.linkedin.com/in/hamdi-akram');
+  if (!await launchUrl(_urlLink)) {
+    throw Exception('Could not launch $_urlLink');
+  }
+}
+Future<void> _launchMaps() async {
+  final Uri _urlLink = Uri.parse('https://maps.app.goo.gl/ttYeiyZKXoLNYYqP6');
   if (!await launchUrl(_urlLink)) {
     throw Exception('Could not launch $_urlLink');
   }

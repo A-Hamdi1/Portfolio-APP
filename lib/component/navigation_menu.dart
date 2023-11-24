@@ -83,7 +83,7 @@ class NavigationController extends GetxController {
     const ProfilePage(),
     const SkillPage(),
     const ProjectPage(),
-    const SpecifiquePage(),
+    const ContactPage(),
   ];
   final PageController pageController = PageController(initialPage: 0);
 }
