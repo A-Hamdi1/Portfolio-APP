@@ -245,7 +245,7 @@ Future<void> _launchLinkedin() async {
   }
 }
 Future<void> _launchMaps() async {
-  final Uri _urlLink = Uri.parse('https://maps.app.goo.gl/ttYeiyZKXoLNYYqP6');
+  final Uri _urlLink = Uri.parse('https://maps.app.goo.gl/CJN6UJx4uRpF18KQA');
   if (!await launchUrl(_urlLink)) {
     throw Exception('Could not launch $_urlLink');
   }

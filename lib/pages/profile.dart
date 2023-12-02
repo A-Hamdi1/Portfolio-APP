@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:portfolio/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -103,24 +104,29 @@ class ProfilePage extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           TSectionHeading(title: 'Education'),
-          TSectionHeading(title: '_______________________________'),
+          TSectionHeading(title: '---------------------------------------------------'),
           const SizedBox(height: 16.0),
           _buildEducationTiles(),
           const SizedBox(height: 16.0),
           TSectionHeading(title: 'Professional Experience'),
-          TSectionHeading(title: '_______________________________'),
+          TSectionHeading(title: '---------------------------------------------------'),
           const SizedBox(height: 16.0),
           _buildExperienceTiles(),
           const SizedBox(height: 16.0),
           TSectionHeading(title: 'Clubs Experience'),
-          TSectionHeading(title: '_______________________________'),
+          TSectionHeading(title: '---------------------------------------------------'),
           const SizedBox(height: 16.0),
           _buildClubsExperienceTiles(),
           const SizedBox(height: 16.0),
           TSectionHeading(title: 'Soft Skills Training'),
-          TSectionHeading(title: '_______________________________'),
+          TSectionHeading(title: '---------------------------------------------------'),
           const SizedBox(height: 16.0),
           _buildSoftSkillsTrainingTiles(),
+          const SizedBox(height: 16.0),
+          TSectionHeading(title: 'Langues'),
+          TSectionHeading(title: '---------------------------------------------------'),
+
+          _buildLangue(),
         ],
 
       ),
@@ -166,12 +172,12 @@ class ProfilePage extends StatelessWidget {
     return Column(
       children: [
         TSettingsMenuTile(
-          icon: Icons.add_circle,
+          icon: Icons.assignment,
           title: 'Futurs Entrepreneurs IIT',
           subTitle: '2020-2021 - Member',
         ),
         TSettingsMenuTile(
-          icon: Icons.add_circle,
+          icon: Icons.assignment,
           title: 'TWS Club',
           subTitle: '2022-2023 - Member',
         ),
@@ -213,4 +219,36 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildLangue() => Container(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          leading: SvgPicture.asset(
+            'icons/flags/svg/tn.svg',
+            package: 'country_icons',
+            height: 20,
+          ),
+          title: const Text('Arabe : Native',style: TextStyle(fontSize: 18),),
+        ),
+        ListTile(
+          leading: SvgPicture.asset(
+            'icons/flags/svg/fr.svg',
+            package: 'country_icons',
+            height: 20,
+          ),
+          title: const Text('Français : Bien',style: TextStyle(fontSize: 18),),
+        ),
+        ListTile(
+          leading: SvgPicture.asset(
+            'icons/flags/svg/gb.svg',
+            package: 'country_icons',
+            height: 16,
+          ),
+          title: const Text('Anglais : Bien',style: TextStyle(fontSize: 18),),
+        ),
+      ],
+    ),
+  );
 }

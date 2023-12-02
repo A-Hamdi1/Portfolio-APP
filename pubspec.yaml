@@ -26,9 +26,11 @@ dependencies:
   lottie: ^2.7.0
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
+  country_icons: ^2.0.2
   cupertino_icons: ^1.0.6
   flutter_native_splash: ^2.3.5
   provider: ^6.1.1
+
 
 flutter_native_splash:
   image: assets/images/light.png
@@ -66,33 +68,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/me.jpg
-    - assets/images/light.png
-    - assets/images/dark.png
-    - assets/images/Item_3.png
-    - assets/frameworks/bootstrap.svg
-    - assets/frameworks/android.svg
-    - assets/frameworks/angular.svg
-    - assets/frameworks/laravel.svg
-    - assets/frameworks/html-5.svg
-    - assets/frameworks/js.svg
-    - assets/frameworks/python.svg
-    - assets/frameworks/flutter.svg
-    - animations/1.json
-    - animations/2.json
-    - assets/images/github.png
-    - assets/images/linkedin.png
-    - assets/images/facebook.png
-    - assets/images/whatsapp.png
-    - assets/images/gmail.png
-    - assets/images/cv_icon.png
-    - assets/images/artyprod.png
-    - assets/images/dashboard.png
-    - assets/images/website1.jpg
-    - assets/images/website2.jpg
-    - assets/images/website3.jpg
-    - assets/images/website4.jpg
-    - assets/images/website5.jpg
-    - assets/images/website6.jpg
-    - assets/images/website7.jpg
-    - assets/images/website8.jpg
+    - assets/frameworks/
+    - animations/
+    - assets/images/
