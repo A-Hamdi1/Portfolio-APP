@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:portfolio/pages/skills.dart';
 import 'package:portfolio/pages/contact.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../function/helper_functions.dart';
 import '../constant/Colors.dart';
 import '../pages/profile.dart';
 import '../pages/projects.dart';
-import '../pages/skills.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({Key? key});
@@ -73,6 +73,7 @@ class NavigationMenu extends StatelessWidget {
           ],
         ),
       ),
+
     );
   }
 }
@@ -81,7 +82,7 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final List<Widget> screens = [
     const ProfilePage(),
-    const SkillPage(),
+    const SkillsWidget(),
     const ProjectPage(),
     const ContactPage(),
   ];

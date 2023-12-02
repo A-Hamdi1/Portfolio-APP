@@ -1,29 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:portfolio/theme/theme_provider.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import '../constant/Colors.dart';
 import '../function/helper_functions.dart';
+import '../theme/theme_provider.dart';
 
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
-  runApp(const SkillPage());
+class SkillsWidget extends StatefulWidget {
+  const SkillsWidget({Key? key}) : super(key: key);
+
+  @override
+  _SkillsWidgetState createState() => _SkillsWidgetState();
 }
 
-class SkillPage extends StatelessWidget {
-  const SkillPage({super.key});
+class _SkillsWidgetState extends State<SkillsWidget> {
+  CarouselController _carouselController = CarouselController();
+  int _current = 0;
+
+  List<dynamic> _skills = [
+    {'title': 'Flutter', 'image': 'assets/skills/flutter.png', 'description': 'Front-End'},
+    {'title': 'AngularJS', 'image': 'assets/skills/angularjs.png', 'description': 'Front-End'},
+    {'title': 'Python', 'image': 'assets/skills/python.png', 'description': 'Back-End'},
+    {'title': 'Java', 'image': 'assets/skills/java.png', 'description': 'Back-End'},
+    {'title': 'ReactJS', 'image': 'assets/skills/react.png', 'description': 'Front-End'},
+    {'title': 'PHP', 'image': 'assets/skills/php.png', 'description': 'Back-End'},
+    {'title': 'Javascript', 'image': 'assets/skills/javascript.png', 'description': 'Front-End'},
+    {'title': 'C#', 'image': 'assets/skills/c-sharp.png', 'description': 'Back-End'},
+    {'title': 'VueJS', 'image': 'assets/skills/vue.png', 'description': 'Front-End'},
+    {'title': 'MongoDB', 'image': 'assets/skills/mongo-db.png', 'description': 'SGBD'},
+    {'title': 'SQL', 'image': 'assets/skills/sql.png', 'description': 'SGBD'},
+    {'title': 'MySQL', 'image': 'assets/skills/mysql.png', 'description': 'SGBD'},
+  ];
 
   @override
   Widget build(BuildContext context) {
     final darkMode = THelperFunctions.isDarkMode(context);
 
+    List<Color> lightModeColors = [
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+      Colors.grey.shade50.withOpacity(0.0),
+    ];
+
+    List<Color> darkModeColors = [
+      Colors.black12.withOpacity(1),
+      Colors.black12.withOpacity(1),
+      Colors.black12.withOpacity(1),
+      Colors.black12.withOpacity(1),
+      Colors.black12.withOpacity(0.0),
+      Colors.black12.withOpacity(0.0),
+      Colors.black12.withOpacity(0.0),
+      Colors.black12.withOpacity(0.0),
+    ];
+
+    List<Color> gradientColors = darkMode ? darkModeColors : lightModeColors;
+
     return Scaffold(
       backgroundColor: darkMode ? TColors.black : Colors.white,
-      body: ListView(
-        padding: EdgeInsets.zero,
+      body: Column(
         children: [
           Container(
             decoration: BoxDecoration(
@@ -38,8 +76,7 @@ class SkillPage extends StatelessWidget {
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
                   title: Text('Akram Hamdi',
-                      style:
-                      Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,
                       )),
                   subtitle: Text('FullStack Developer',
@@ -51,55 +88,94 @@ class SkillPage extends StatelessWidget {
                     backgroundImage: AssetImage('assets/images/me.jpg'),
                   ),
                 ),
-                const SizedBox(height: 30)
               ],
             ),
           ),
-          Container(
-            color: Theme.of(context).primaryColor,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(
-                  color: darkMode ? TColors.black : Colors.white,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(200),
-                  )),
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                crossAxisSpacing: 40,
-                mainAxisSpacing: 30,
-                children: [
-                  itemDashboard(context, 'HTML', "assets/frameworks/html-5.svg",
-                      Colors.deepOrange, darkMode),
-                  itemDashboard(
-                      context,
-                      'Bootstrap',
-                      "assets/frameworks/bootstrap.svg",
-                      Colors.purple,
-                      darkMode),
-                  itemDashboard(context, 'Android',
-                      "assets/frameworks/android.svg", Colors.teal, darkMode),
-                  itemDashboard(context, 'Angular',
-                      "assets/frameworks/angular.svg", Colors.red, darkMode),
-                  itemDashboard(context, 'Python',
-                      "assets/frameworks/python.svg", Colors.indigo, darkMode),
-                  itemDashboard(context, 'JavaScript',
-                      "assets/frameworks/js.svg", Colors.yellow, darkMode),
-                  itemDashboard(context, 'Flutter',
-                      "assets/frameworks/flutter.svg", Colors.blue, darkMode),
-                  itemDashboard(
-                      context,
-                      'Laravel',
-                      "assets/frameworks/laravel.svg",
-                      Color(0xFFD4423A),
-                      darkMode),
-                ],
-              ),
+          Expanded(
+            child: Stack(
+              children: [
+                Image.asset(_skills[_current]['image'], fit: BoxFit.cover),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: gradientColors)),
+                  ),
+                ),
+                Positioned(
+                  bottom: 5,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  width: MediaQuery.of(context).size.width,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      height: 315.0,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.70,
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
+                    ),
+                    carouselController: _carouselController,
+                    items: _skills.map((movie) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              color: darkMode ? TColors.black : Colors.white,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 220,
+                                    margin: const EdgeInsets.only(top: 20),
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Image.asset(movie['image'], fit: BoxFit.cover),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    movie['title'],
+                                    style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Container(
+                                    child: Text(
+                                      movie['description'],
+                                      style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: darkMode ? Colors.white : Colors.grey.shade600,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 20),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -114,38 +190,4 @@ class SkillPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget itemDashboard(BuildContext context, String title, String svgPath,
-      Color background, bool darkMode) =>
-      Container(
-        decoration: BoxDecoration(
-            color: darkMode ? TColors.grey : Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  offset: const Offset(0, 2),
-                  color: Theme.of(context).primaryColor.withOpacity(.2),
-                  spreadRadius: 2,
-                  blurRadius: 2),
-            ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: background,
-                shape: BoxShape.circle,
-              ),
-              child: SvgPicture.asset(svgPath,
-                  width: 24, height: 24, color: Colors.white),
-            ),
-            const SizedBox(height: 8),
-            Text(title.toUpperCase(),
-                style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
-      );
 }
-
-
