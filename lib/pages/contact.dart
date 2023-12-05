@@ -9,6 +9,8 @@ import 'package:portfolio/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../function/localisation.dart';
+
 void main() => runApp(ContactPage());
 
 class ContactPage extends StatefulWidget {
@@ -120,7 +122,10 @@ class _ContactPageState extends State<ContactPage> {
                 SizedBox(width: 25),
                 buildSocialIcon(
                   FontAwesomeIcons.locationDot,
-                  onTap: () => _launchMaps(),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LocalisationPage())),
                   darkMode: darkMode,
                 ),
               ],
@@ -200,7 +205,6 @@ class _ContactPageState extends State<ContactPage> {
           child: Icon(
             Icons.brightness_4,
             color: Colors.white,
-
           ),
           backgroundColor: darkMode ? Color(0xFFF2A359) : Colors.grey,
         ),
@@ -244,6 +248,7 @@ Future<void> _launchLinkedin() async {
     throw Exception('Could not launch $_urlLink');
   }
 }
+
 Future<void> _launchMaps() async {
   final Uri _urlLink = Uri.parse('https://maps.app.goo.gl/CJN6UJx4uRpF18KQA');
   if (!await launchUrl(_urlLink)) {
